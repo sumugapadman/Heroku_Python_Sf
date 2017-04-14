@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request
+from flask import Flask, request, render_template
 from flask_restful import Resource, Api, reqparse
 from simple_salesforce import Salesforce
 
@@ -8,6 +8,10 @@ api = Api(app)
 
 #Initialize a connection with Salesforce
 sf = Salesforce(username=os.environ.get('SALESFORCE_USERNAME'), password=os.environ.get('SALESFORCE_PASSWORD'), security_token=os.environ.get('SALESFORCE_TOKEN'))
+
+@app.route('/')
+def home():
+    return render_template('index.html')
 
 class Account(Resource):
     # Tell the api what are required fields to get a meaniful error while insert
