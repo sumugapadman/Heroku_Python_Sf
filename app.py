@@ -25,4 +25,6 @@ class Account(Resource):
 
 #http://herokuapp.cmm/account/Burlington_texttilles
 api.add_resource(Account, '/account/<string:name>')
-app.run(port=5000)
+
+if __name__ == '__main__':
+    app.run(debug = True, port=5000)
